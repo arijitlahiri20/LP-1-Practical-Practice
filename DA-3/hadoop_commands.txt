@@ -1,0 +1,17 @@
+start-all.sh
+
+jps
+
+hadoop dfs -rm -r /usr/local/hadoop/input
+
+hadoop dfs -rm -r /usr/local/hadoop/output
+
+hadoop dfs -mkdir -p /usr/local/hadoop/input
+
+hadoop dfs -copyFromLocal wordcount.txt /usr/local/hadoop/input
+
+hadoop jar wc.jar wc.WordCount /usr/local/hadoop/input /usr/local/hadoop/output
+
+hadoop dfs -cat /usr/local/hadoop/output/part-r-00000
+
+stop-all.sh

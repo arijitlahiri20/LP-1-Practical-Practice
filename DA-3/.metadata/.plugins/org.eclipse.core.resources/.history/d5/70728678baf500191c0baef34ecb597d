@@ -1,0 +1,10 @@
+package wc;
+
+public class WordCount {
+	
+	public static void main(String[] args) throw Exception
+	{
+		
+	}
+
+}
