@@ -2,13 +2,13 @@
 #include<omp.h>
 #include<stdlib.h>
 #include <chrono>
-#define N 10000
+#define N 100000
 using namespace std;
 using namespace std::chrono;
 
 void p_bubble_sort(int *a)
 {
-    omp_set_num_threads(3);
+    omp_set_num_threads(4);
     static int flag;
     for(int i=0;i<N-2;i++)
     {
