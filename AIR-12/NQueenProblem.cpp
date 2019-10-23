@@ -18,20 +18,16 @@ class backtracking{
             if(board[row][i])
                 return false;
         }
-
         for(int i=row, j=column; i>=0 && j>=0; i-=1, j-=1){
             if(board[i][j])
                 return false;
         }
-
         for(int i=row, j=column; i<dimen && j>=0; i+=1, j-=1){
             if(board[i][j])
                 return false;
         }
-
         return true;
     }
-
     bool init(int column){
         bool flag = true;
         int temp;
@@ -41,7 +37,6 @@ class backtracking{
                 break;
             }
         }
-
         if(flag==true) return true;
 
         for(int row=0; row<dimen; row+=1){
@@ -56,14 +51,12 @@ class backtracking{
                 }
             }
         }
-
         return false;
     }
 
 public:
     backtracking(int d){
         dimen = d;
-
         board = (bool**) malloc(dimen * sizeof(bool*));
         checkrow = (bool*) calloc(dimen, sizeof(bool));
 
@@ -72,7 +65,6 @@ public:
         }
 
         srand(time(0));
-
         init(rand()%dimen);
 
         for(int i=0; i<dimen; i+=1){
@@ -104,15 +96,13 @@ class branchnbound{
     }
     
     bool init(int column){
-    	bool flag = true;
-    	
+    	bool flag = true;  	
     	for(int i=0; i<dimen; i+=1){
     		if(checkRow[i]==false){
     			flag = false;
     			break;
     		}
-    	}
-    	
+    	}	
     	if(flag==true) return true;
     	
     	for(int row=0; row<dimen; row+=1){
@@ -129,8 +119,7 @@ class branchnbound{
     			majorDiagonal[row-column+dimen-1] = false;
     			minorDiagonal[row + column] = false;
     		}
-    	}
-    	
+    	}	
     	return false;
     }
     
@@ -148,7 +137,6 @@ public:
 		}
 		
 		srand(time(0));
-
         init(rand()%dimen);
 
         for(int i=0; i<dimen; i+=1){
