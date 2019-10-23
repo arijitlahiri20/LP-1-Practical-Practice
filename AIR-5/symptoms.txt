@@ -1,0 +1,6 @@
+[common cold],runny nose, coughing, mild fever, sore throat, congestion, slight body pain
+[flu], fever, aching muscles, headache, dry persistent cough, nasal congestion, fatigue
+[stomach infection],diarrhea, stomach cramps, dehydration, nausea, vomitting, mild fever
+[bacterial infection], coughing, sneezing,inflammation, vomiting, diarrhea, fatigue
+[asthma], coughing, sneezing, allergy, difficulty in breathing, lung pain, weakness
+[diabetes], urinating, thirsty, blurry vision, weight loss, tingling

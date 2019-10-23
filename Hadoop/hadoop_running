@@ -1,0 +1,50 @@
+start-all.sh
+
+This script is Deprecated. Instead use start-dfs.sh and start-yarn.sh
+18/12/31 10:49:16 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Starting namenodes on [localhost]
+localhost: starting namenode, logging to /usr/local/hadoop/logs/hadoop-hduser-namenode-evleen-Inspiron-5521.out
+localhost: starting datanode, logging to /usr/local/hadoop/logs/hadoop-hduser-datanode-evleen-Inspiron-5521.out
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /usr/local/hadoop/logs/hadoop-hduser-secondarynamenode-evleen-Inspiron-5521.out
+18/12/31 10:49:33 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+starting yarn daemons
+starting resourcemanager, logging to /usr/local/hadoop/logs/yarn-hduser-resourcemanager-evleen-Inspiron-5521.out
+localhost: starting nodemanager, logging to /usr/local/hadoop/logs/yarn-hduser-nodemanager-evleen-Inspiron-5521.out
+
+jps
+
+11266 DataNode
+11636 ResourceManager
+7845 org.eclipse.equinox.launcher_1.3.0.dist.jar
+12118 Jps
+11768 NodeManager
+11467 SecondaryNameNode
+11103 NameNode
+
+
+hadoop dfs -rm -r /usr/local/hadoop/input
+
+hadoop dfs -rm -r /usr/local/hadoop/output
+
+
+hadoop dfs -mkdir -p /usr/local/hadoop/input
+
+
+hadoop dfs -copyFromLocal wordcountfile /usr/local/hadoop/input
+
+hadoop jar MRProgramsDemo.jar PackageDemo.WordCount /usr/local/hadoop/input /usr/local/hadoop/output
+
+
+hadoop dfs -cat /usr/local/hadoop/output/part-r-00000
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+
+18/12/31 10:42:27 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+BUS	7
+CAR	4
+TRAIN	6
+
+
+stop-all.sh
+

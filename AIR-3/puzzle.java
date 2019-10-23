@@ -27,6 +27,7 @@ class Node{
 		this.y=new_y;
 
 		this.depth=this.depth+curr_depth;
+		this.parent = parent;
 	}
 };
 
@@ -48,14 +49,14 @@ public class puzzle{
 		root.cost=temp.cost;
 
 		q.add(root);
-		print_matrix(temp);
+		//print_matrix(temp);
 
 		while(temp.h!=0){
 			for(int i=0;i<4;i++){
 				x=temp.x;
 				y=temp.y;
 				if((y+steps_y[i]>=0) && (x+steps_x[i]>=0) && (y+steps_y[i]<3) && (x+steps_x[i]<3)){
-					Node new_node = new Node(temp.matrix,temp.depth,x,y,x+steps_x[i],y+steps_y[i],temp);
+					Node new_node = new Node(temp.matrix,temp.depth+1,x,y,x+steps_x[i],y+steps_y[i],temp);
 					new_node.cost=Cost(new_node,goal);
 					q.add(new_node);
 				}
@@ -73,6 +74,7 @@ public class puzzle{
 					count++;
 			}
 		}
+		n.h=count;
 		return count+n.depth;
 	}
 
@@ -83,15 +85,21 @@ public class puzzle{
 			}
 			System.out.println();
 		}
-		System.out.println(n.cost);
+		//System.out.println(n.cost);
 		System.out.println();
 	}
 
 	public static void print(Node n){
 		int count=0;
+		Stack<Node> s = new Stack<Node>(); 
 		while(n!=null){
-			print_matrix(n);
+			s.push(n);
 			n=n.parent;
+		}
+		System.out.println("No. of Iterations =" + (s.size()-1) + "\n");
+		while(!s.empty()){
+			print_matrix(s.peek());
+			s.pop();
 		}
 	}
 
@@ -103,7 +111,7 @@ public class puzzle{
 		System.out.println("Enter Initial Configuration : ");
 		for(int i=0;i<3;i++){
 			for(int j=0;j<3;j++){
-				matrix[i][j]=sc.nextint();
+				matrix[i][j]=sc.nextInt();
 				if(matrix[i][j]==0){
 					x=i;y=j;
 				}
@@ -112,7 +120,7 @@ public class puzzle{
 		System.out.println("Enter Goal Configuration : ");
 		for(int i=0;i<3;i++){
 			for(int j=0;j<3;j++){
-				goal[i][j]=sc.nextint();
+				goal[i][j]=sc.nextInt();
 			}
 		}
 		solve(matrix,goal,x,y);

@@ -6,9 +6,9 @@
 #define N 10
 using namespace std;
 
-__global__ void addV(int *a)
+__global__ void addV(int *a,int *b,int *c)
 {
-    
+    c[threadIdx.x] = a[threadIdx.x]+b[threadIdx.x];
     
 }
 __global__ void MulMatVec(int *a)

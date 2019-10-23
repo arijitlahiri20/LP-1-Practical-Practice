@@ -53,14 +53,12 @@ void p_merge_sort(int *a,int l, int r)
     if(l<r)
     {
       int mid = (l+r)/2;
-      #pragma omp parallel sections
-      {
-        #pragma omp section
-        p_merge_sort(a, l, mid);
+      #pragma omp task firstprivate(a,l,mid,r)
+      p_merge_sort(a, l, mid);
 
-        #pragma omp section
-        p_merge_sort(a, mid+1, r);
-      }
+      #pragma omp task firstprivate(a,l,mid,r)
+      p_merge_sort(a, mid+1, r);
+      #pragma omp taskwait
        merge(a, l, mid, r); 
     }
 }

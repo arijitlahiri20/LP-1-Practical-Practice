@@ -9,6 +9,7 @@ using namespace std::chrono;
 void p_bubble_sort(int *a)
 {
     omp_set_num_threads(4);
+   
     static int flag;
     for(int i=0;i<N-2;i++)
     {
@@ -46,17 +47,17 @@ void bubble_sort(int *a)
 {
     for(int i=0;i<N;i++)
     {
-        bool flag=true;
+        //bool flag=true;
         for(int j=0;j<N-i-1;j++)
         {
             if(a[j]>a[j+1])
             {
                 swap(a[i],a[j]);   
-                flag=false;
+                //flag=false;
             }              
         }
-        if(flag)
-            break;
+        //if(flag)
+            //break;
     }
 }
 
